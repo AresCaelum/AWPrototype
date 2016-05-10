@@ -22,6 +22,8 @@ public class AdManager : MonoBehaviour
         DontDestroyOnLoad(this);
 		#if UNITY_ANDROID
 	        Advertisement.Initialize(androidID , true);
+		#elif UNITY_IOS
+			Advertisement.Initialize(iphoneID , true);
 		#endif
 
     }
@@ -34,15 +36,19 @@ public class AdManager : MonoBehaviour
 
 	public void ShowAd()
     {
+		#if UNITY_ADS
 		if(Advertisement.IsReady(adZone))
         {
 			ShowOptions options = new ShowOptions();
 			options.resultCallback = RefreshLives;
 			Advertisement.Show(adZone,options);
         }
-
+		#else
+			LivesManager.instance.ResetLives ();
+		#endif
     }
 
+	#if UNITY_ADS
 	public void RefreshLives(ShowResult result)
 	{
 		switch (result) {
@@ -55,4 +61,5 @@ public class AdManager : MonoBehaviour
 			break;
 		}
 	}
+	#endif
 }
