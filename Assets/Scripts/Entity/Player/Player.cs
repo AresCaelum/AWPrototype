@@ -4,9 +4,11 @@ using System.Collections;
 public class Player : MovableEntity {
 	[SerializeField]
 	Vector2 moveSpeed = Vector2.zero;
+	[SerializeField]
+	GameObject deathScene;
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
-
+	bool paused = false;
 	// Use this for initialization
 	protected override void Start () {
 		base.Start ();
@@ -14,30 +16,63 @@ public class Player : MovableEntity {
 	
 	// Update is called once per frame
 	protected override void Update () {
+		if (GameManager.paused || !GameManager.started_game)
+			return;
+		
 		HandleInput ();
+
+
 		base.Update ();
 	}
 
 	protected override void UpdateAnimation()
 	{
-		myAnimator.SetFloat ("InputH", velocity.x);
-		myAnimator.SetBool ("Fire", shooting);
-		base.UpdateAnimation ();
+			myAnimator.SetFloat ("InputH", velocity.x);
+			myAnimator.SetBool ("Walk", velocity.x != 0);
+			myAnimator.SetBool ("Fire", shooting);
+			base.UpdateAnimation ();
 	}
 
 	protected virtual void HandleInput()
 	{
 		myBody.angularVelocity = 0.0f;
 
-		velocity.x = Input.GetAxis ("Horizontal");
-		shooting = Input.GetButtonDown ("Fire");
+		if (Input.GetMouseButton (0)) {
+			if (Input.mousePosition.y < Screen.height * 0.25) {
+				velocity = Vector2.zero;
+				shooting = true;
+			} else {
+				if (Input.mousePosition.x < Screen.width * 0.5f)
+					velocity.x = -1;
+				else
+					velocity.x = 1;
 
-		myBody.velocity = new Vector2 (velocity.x * moveSpeed.x * Time.deltaTime, velocity.y * moveSpeed.y * Time.deltaTime);
+				shooting = false;
+			}
+		} else {
+			velocity = Vector2.zero;
+			shooting = false;
+		}
+
+		/*
+		velocity.x = Input.GetAxisRaw ("Horizontal");
+		shooting = Input.GetButtonDown ("Fire");
+*/
+		myBody.MovePosition(new Vector2 (transform.position.x + velocity.x * moveSpeed.x * Time.deltaTime, transform.position.y + velocity.y * moveSpeed.y* Time.deltaTime));
 	}
 
 	// Gets called by the animator
 	public void Fire()
 	{
 
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Enemy") {
+			LivesManager.instance.LostLife ();
+			Instantiate (deathScene, Vector3.zero, Quaternion.identity);
+			Destroy (this.gameObject);
+		}
 	}
 }

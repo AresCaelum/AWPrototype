@@ -1,0 +1,21 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Entity\Enemy\Slime.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Entity\Enemy\Slime.cs" Line="18" Column="17" />
+      <File FileName="Assets\Scripts\Menu\CountDown.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WorldSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Audio\AudioSlider.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\AudioManagers\AudioManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\DeathMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\PauseMenu.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

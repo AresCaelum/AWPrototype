@@ -10,6 +10,8 @@ public class Enemy : MovableEntity {
 	
 	// Update is called once per frame
 	protected override void Update () {
+		if (GameManager.paused)
+			return;
 		HandleAI ();
 
 		base.Update ();
