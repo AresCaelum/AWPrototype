@@ -116,4 +116,10 @@ public class Slime : Enemy{
 			myBody.velocity = vel;
 	}
 
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.tag == "Projectile") {
+			CreateChildren ();
+		}
+	}
 }

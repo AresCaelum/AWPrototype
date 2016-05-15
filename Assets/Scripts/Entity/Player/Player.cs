@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class Player : MovableEntity {
-	[SerializeField]
-	Vector2 moveSpeed = Vector2.zero;
-	[SerializeField]
-	GameObject deathScene;
+	[SerializeField]Vector2 moveSpeed = Vector2.zero;
+	[SerializeField]GameObject deathScene;
+	[SerializeField]GameObject baseBullet;
+	[SerializeField]Transform firePoint;
+	GameObject WeaponPowerUp;
+
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
 	bool paused = false;
@@ -53,18 +55,18 @@ public class Player : MovableEntity {
 			velocity = Vector2.zero;
 			shooting = false;
 		}
-
-		/*
-		velocity.x = Input.GetAxisRaw ("Horizontal");
-		shooting = Input.GetButtonDown ("Fire");
-*/
+			
 		myBody.MovePosition(new Vector2 (transform.position.x + velocity.x * moveSpeed.x * Time.deltaTime, transform.position.y + velocity.y * moveSpeed.y* Time.deltaTime));
 	}
 
 	// Gets called by the animator
 	public void Fire()
 	{
-
+		if (WeaponPowerUp == null) {
+			Instantiate (baseBullet, firePoint.position, Quaternion.identity);
+		} else {
+			Instantiate (WeaponPowerUp, firePoint.position, Quaternion.identity);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -74,5 +76,19 @@ public class Player : MovableEntity {
 			Instantiate (deathScene, Vector3.zero, Quaternion.identity);
 			Destroy (this.gameObject);
 		}
+	}
+
+	public void AddPowerUp(GameObject powerUp)
+	{
+		if (WeaponPowerUp) {
+			// Add Remove old powerup
+			WeaponPowerUp.SendMessage("DestroySelf");
+		}
+		WeaponPowerUp = powerUp;
+	}
+
+	public void RemovePowerUp(GameObject powerUp)
+	{
+		WeaponPowerUp = null;
 	}
 }

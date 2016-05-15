@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0d958d5eb3ab18142bb0da20ee87ea7a
-timeCreated: 1463189095
+timeCreated: 1463249415
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -37,7 +37,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -87,18 +87,18 @@ TextureImporter:
         y: 2362
         width: 141
         height: 156
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5599404, y: 0.6324322}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -48.2, y: 63.599976}
-        - {x: -56.2, y: 39.599976}
-        - {x: -56.2, y: -50.400024}
-        - {x: -40.2, y: -62.400024}
-        - {x: 47.8, y: -62.400024}
-        - {x: 57.8, y: -40.400024}
-        - {x: 57.8, y: 40.599976}
-        - {x: 31.8, y: 63.599976}
+      - - {x: -54.961277, y: 47.07251}
+        - {x: -62.961277, y: 23.07251}
+        - {x: -62.961277, y: -66.92749}
+        - {x: -46.961277, y: -78.92749}
+        - {x: 41.038723, y: -78.92749}
+        - {x: 51.038723, y: -56.92749}
+        - {x: 51.038723, y: 24.07251}
+        - {x: 25.038723, y: 47.07251}
     - name: Blob Sprite Sheet 02_1
       rect:
         serializedVersion: 2
@@ -106,16 +106,16 @@ TextureImporter:
         y: 2379
         width: 180
         height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.53651917, y: 0.55388105}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -37.300003, y: 49.200073}
-        - {x: -72.3, y: 17.200073}
-        - {x: -72.3, y: -48.799927}
-        - {x: 72.7, y: -48.799927}
-        - {x: 72.7, y: 19.200073}
-        - {x: 60.699997, y: 49.200073}
+      - - {x: -42.55873, y: 43.941284}
+        - {x: -77.55873, y: 11.941284}
+        - {x: -77.55873, y: -54.058716}
+        - {x: 67.44127, y: -54.058716}
+        - {x: 67.44127, y: 13.941284}
+        - {x: 55.44127, y: 43.941284}
     - name: Blob Sprite Sheet 02_2
       rect:
         serializedVersion: 2
@@ -123,18 +123,18 @@ TextureImporter:
         y: 2379
         width: 221
         height: 110
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.50053245, y: 0.32428312}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -29.600006, y: 44.700073}
-        - {x: -88.600006, y: 15.700073}
-        - {x: -88.600006, y: -39.299927}
-        - {x: -80.600006, y: -41.299927}
-        - {x: -64.600006, y: -44.299927}
-        - {x: 89.399994, y: -44.299927}
-        - {x: 89.399994, y: -17.299927}
-        - {x: 48.399994, y: 44.700073}
+      - - {x: -29.694183, y: 60.163208}
+        - {x: -88.69418, y: 31.163208}
+        - {x: -88.69418, y: -23.836792}
+        - {x: -80.69418, y: -25.836792}
+        - {x: -64.69418, y: -28.836792}
+        - {x: 89.30582, y: -28.836792}
+        - {x: 89.30582, y: -1.836792}
+        - {x: 48.305817, y: 60.163208}
     - name: Blob Sprite Sheet 02_3
       rect:
         serializedVersion: 2
@@ -142,16 +142,16 @@ TextureImporter:
         y: 2326
         width: 102
         height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5368251, y: 0.6195978}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -41, y: 86.30005}
-        - {x: -41, y: -84.69995}
-        - {x: 22, y: -84.69995}
-        - {x: 41, y: -78.69995}
-        - {x: 41, y: 39.30005}
-        - {x: 20, y: 86.30005}
+      - - {x: -44.004944, y: 66.01636}
+        - {x: -44.004944, y: -104.98364}
+        - {x: 18.995056, y: -104.98364}
+        - {x: 37.995056, y: -98.98364}
+        - {x: 37.995056, y: 19.016357}
+        - {x: 16.995056, y: 66.01636}
     - name: Blob Sprite Sheet 02_4
       rect:
         serializedVersion: 2
@@ -159,16 +159,16 @@ TextureImporter:
         y: 2354
         width: 140
         height: 155
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5335379, y: 0.6272288}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -31.899963, y: 62.700073}
-        - {x: -55.899963, y: 58.700073}
-        - {x: -55.899963, y: -62.299927}
-        - {x: 57.100037, y: -62.299927}
-        - {x: 57.100037, y: 56.700073}
-        - {x: 44.100037, y: 62.700073}
+      - - {x: -35.65619, y: 46.923706}
+        - {x: -59.65619, y: 42.923706}
+        - {x: -59.65619, y: -78.076294}
+        - {x: 53.34381, y: -78.076294}
+        - {x: 53.34381, y: 40.923706}
+        - {x: 40.34381, y: 46.923706}
     - name: Blob Sprite Sheet 02_5
       rect:
         serializedVersion: 2
@@ -177,7 +177,7 @@ TextureImporter:
         width: 152
         height: 115
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -43.900024, y: 46.700073}
@@ -195,18 +195,18 @@ TextureImporter:
         y: 2108
         width: 137
         height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.51370895, y: 0.61820334}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -43.8, y: 57.900024}
-        - {x: -54.8, y: 43.900024}
-        - {x: -54.8, y: -26.099976}
-        - {x: -47.8, y: -55.099976}
-        - {x: -38.8, y: -57.099976}
-        - {x: 43.2, y: -57.099976}
-        - {x: 55.2, y: -37.099976}
-        - {x: 55.2, y: 57.900024}
+      - - {x: -45.3025, y: 44.377563}
+        - {x: -56.3025, y: 30.377563}
+        - {x: -56.3025, y: -39.622437}
+        - {x: -49.3025, y: -68.62244}
+        - {x: -40.3025, y: -70.62244}
+        - {x: 41.6975, y: -70.62244}
+        - {x: 53.6975, y: -50.622437}
+        - {x: 53.6975, y: 44.377563}
     - name: Blob Sprite Sheet 02_7
       rect:
         serializedVersion: 2
@@ -214,17 +214,17 @@ TextureImporter:
         y: 2101
         width: 127
         height: 170
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.55175924, y: 0.621526}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -50.800003, y: 69.30005}
-        - {x: -50.800003, y: -53.69995}
-        - {x: -26.800003, y: -67.69995}
-        - {x: 20.199997, y: -67.69995}
-        - {x: 44.199997, y: -49.69995}
-        - {x: 51.199997, y: -17.699951}
-        - {x: 51.199997, y: 69.30005}
+      - - {x: -56.05873, y: 52.77246}
+        - {x: -56.05873, y: -70.22754}
+        - {x: -32.05873, y: -84.22754}
+        - {x: 14.941269, y: -84.22754}
+        - {x: 38.94127, y: -66.22754}
+        - {x: 45.94127, y: -34.22754}
+        - {x: 45.94127, y: 52.77246}
     - name: Blob Sprite Sheet 02_8
       rect:
         serializedVersion: 2
@@ -232,19 +232,19 @@ TextureImporter:
         y: 2096
         width: 127
         height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.536971, y: 0.6266157}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -40.69998, y: 72.80005}
-        - {x: -50.69998, y: 57.80005}
-        - {x: -50.69998, y: -37.19995}
-        - {x: -22.699982, y: -71.19995}
-        - {x: 22.300018, y: -71.19995}
-        - {x: 51.30002, y: -51.19995}
-        - {x: 52.30002, y: -41.19995}
-        - {x: 52.30002, y: 68.80005}
-        - {x: 36.30002, y: 72.80005}
+      - - {x: -44.456238, y: 54.769897}
+        - {x: -54.456238, y: 39.769897}
+        - {x: -54.456238, y: -55.230103}
+        - {x: -26.456238, y: -89.2301}
+        - {x: 18.543762, y: -89.2301}
+        - {x: 47.543762, y: -69.2301}
+        - {x: 48.543762, y: -59.230103}
+        - {x: 48.543762, y: 50.769897}
+        - {x: 32.543762, y: 54.769897}
     - name: Blob Sprite Sheet 02_9
       rect:
         serializedVersion: 2
@@ -252,19 +252,19 @@ TextureImporter:
         y: 2104
         width: 152
         height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4752872, y: 0.585369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -52, y: 57.700073}
-        - {x: -61, y: 35.700073}
-        - {x: -61, y: -29.299927}
-        - {x: -51, y: -54.299927}
-        - {x: -42, y: -57.299927}
-        - {x: 53, y: -57.299927}
-        - {x: 61, y: -36.299927}
-        - {x: 61, y: 55.700073}
-        - {x: 59, y: 57.700073}
+      - - {x: -48.994934, y: 47.933838}
+        - {x: -57.994934, y: 25.933838}
+        - {x: -57.994934, y: -39.066162}
+        - {x: -47.994934, y: -64.06616}
+        - {x: -38.994934, y: -67.06616}
+        - {x: 56.005066, y: -67.06616}
+        - {x: 64.005066, y: -46.066162}
+        - {x: 64.005066, y: 45.933838}
+        - {x: 62.005066, y: 47.933838}
     - name: Blob Sprite Sheet 02_10
       rect:
         serializedVersion: 2
@@ -272,17 +272,17 @@ TextureImporter:
         y: 2123
         width: 179
         height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5209845, y: 0.53817326}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 51.400024, y: 49.900024}
-        - {x: -35.599976, y: 49.900024}
-        - {x: -71.599976, y: 14.900024}
-        - {x: -71.599976, y: -49.099976}
-        - {x: 72.400024, y: -49.099976}
-        - {x: 72.400024, y: 28.900024}
-        - {x: 70.400024, y: 44.900024}
+      - - {x: 48.39502, y: 46.143677}
+        - {x: -38.60498, y: 46.143677}
+        - {x: -74.60498, y: 11.143677}
+        - {x: -74.60498, y: -52.856323}
+        - {x: 69.39502, y: -52.856323}
+        - {x: 69.39502, y: 25.143677}
+        - {x: 67.39502, y: 41.143677}
     - name: Blob Sprite Sheet 02_11
       rect:
         serializedVersion: 2
@@ -291,7 +291,7 @@ TextureImporter:
         width: 110
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -38.7, y: 71.30005}
@@ -309,7 +309,7 @@ TextureImporter:
         width: 131
         height: 137
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -52.399994, y: 55.200073}
@@ -326,7 +326,7 @@ TextureImporter:
         width: 190
         height: 111
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -50.299988, y: 45.400024}
@@ -346,7 +346,7 @@ TextureImporter:
         width: 146
         height: 147
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -35.399963, y: 59.200073}
@@ -366,7 +366,7 @@ TextureImporter:
         width: 57
         height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 17.200005, y: 23.200073}
@@ -386,7 +386,7 @@ TextureImporter:
         width: 57
         height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18.799988, y: 20.200073}
@@ -405,7 +405,7 @@ TextureImporter:
         width: 42
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 12, y: 23.800049}
@@ -426,7 +426,7 @@ TextureImporter:
         width: 47
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -13, y: 19.200073}
@@ -445,7 +445,7 @@ TextureImporter:
         width: 49
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18, y: 20.300049}
@@ -464,7 +464,7 @@ TextureImporter:
         width: 56
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Blob Sprite Sheet 02_21
@@ -475,7 +475,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 14.900002, y: 19.900024}
@@ -494,7 +494,7 @@ TextureImporter:
         width: 53
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18.299988, y: 21.599976}
@@ -513,7 +513,7 @@ TextureImporter:
         width: 57
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -13.799988, y: 23.400024}
@@ -531,7 +531,7 @@ TextureImporter:
         width: 56
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 11.700012, y: 23.400024}
@@ -551,7 +551,7 @@ TextureImporter:
         width: 56
         height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -21.399963, y: 20.400024}
@@ -568,7 +568,7 @@ TextureImporter:
         width: 52
         height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -14.699997, y: 23.200012}
@@ -587,7 +587,7 @@ TextureImporter:
         width: 52
         height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -17.799988, y: 24.299988}
@@ -606,7 +606,7 @@ TextureImporter:
         width: 52
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -18.700012, y: 23.299988}
@@ -625,7 +625,7 @@ TextureImporter:
         width: 56
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -12.599976, y: 23.600037}
