@@ -59,8 +59,9 @@ public class Player : MovableEntity {
 				shooting = false;
 			}
 		} else {
-			velocity = Vector2.zero;
-			shooting = false;
+			
+			velocity = Input.GetAxisRaw("Horizontal");
+			shooting = Input.GetKeyDown(KeyCode.Space);
 		}
 			
 		myBody.MovePosition(new Vector2 (transform.position.x + velocity.x * moveSpeed.x * Time.deltaTime, transform.position.y + velocity.y * moveSpeed.y* Time.deltaTime));
