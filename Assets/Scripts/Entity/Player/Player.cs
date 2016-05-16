@@ -2,17 +2,24 @@
 using System.Collections;
 
 public class Player : MovableEntity {
+	static public Player instance;
 	[SerializeField]Vector2 moveSpeed = Vector2.zero;
 	[SerializeField]GameObject deathScene;
 	[SerializeField]GameObject baseBullet;
 	[SerializeField]Transform firePoint;
-	GameObject WeaponPowerUp;
+	PowerUpObject WeaponPowerUp;
 
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
 	bool paused = false;
 	// Use this for initialization
 	protected override void Start () {
+		if (instance != null) {
+			Destroy (this.gameObject);
+			return;
+		}
+
+		instance = this;
 		base.Start ();
 	}
 	
@@ -65,7 +72,7 @@ public class Player : MovableEntity {
 		if (WeaponPowerUp == null) {
 			Instantiate (baseBullet, firePoint.position, Quaternion.identity);
 		} else {
-			Instantiate (WeaponPowerUp, firePoint.position, Quaternion.identity);
+			Instantiate (WeaponPowerUp.ProjectileObject, firePoint.position, Quaternion.identity);
 		}
 	}
 
@@ -78,16 +85,23 @@ public class Player : MovableEntity {
 		}
 	}
 
-	public void AddPowerUp(GameObject powerUp)
+	public void AddPowerUp(PowerUpObject powerUp)
 	{
 		if (WeaponPowerUp) {
 			// Add Remove old powerup
-			WeaponPowerUp.SendMessage("DestroySelf");
+			powerUp.DestroySelf();
 		}
 		WeaponPowerUp = powerUp;
 	}
 
-	public void RemovePowerUp(GameObject powerUp)
+	void OnDestroy()
+	{
+		if (instance == this) {
+			instance = null;
+		}
+	}
+
+	public void RemovePowerUp()
 	{
 		WeaponPowerUp = null;
 	}

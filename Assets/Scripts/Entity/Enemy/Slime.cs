@@ -29,7 +29,7 @@ public class Slime : Enemy{
 			SetVelocity (startingVelocity);
 			initialized = true;
 		}
-
+			
 		HandleAI ();
 
 		base.Update ();
