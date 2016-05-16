@@ -10,7 +10,7 @@ public class UniverseManager : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	static void CompletedWorld()
+	static public void CompletedWorld()
 	{
 		PlayerPrefs.SetInt ("Universe_" + universe_selected.ToString() + "_" + world_selected.ToString (), 1);
 		LivesManager.instance.SavePrefs ();
