@@ -74,16 +74,16 @@ public class Slime : Enemy{
 			if (leftSlimeScript) {
 				leftSlimeScript.SetSize (mySize - 1);
 				if (myBody.velocity.x < 0)
-					leftSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, myBody.velocity.y));
+					leftSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 2));
 				else
-					leftSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, myBody.velocity.y));
+					leftSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 2));
 			}
 			if (rightSlimeScript) {
 				rightSlimeScript.SetSize (mySize - 1);
 				if (myBody.velocity.x > 0)
-					rightSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, myBody.velocity.y));
+					rightSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 2));
 				else
-					rightSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, myBody.velocity.y));
+					rightSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 2));
 			}
 		}
 

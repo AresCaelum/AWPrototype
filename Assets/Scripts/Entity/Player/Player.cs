@@ -60,7 +60,7 @@ public class Player : MovableEntity {
 			}
 		} else {
 			
-			velocity = Input.GetAxisRaw("Horizontal");
+			velocity.x = Input.GetAxisRaw("Horizontal");
 			shooting = Input.GetKeyDown(KeyCode.Space);
 		}
 			

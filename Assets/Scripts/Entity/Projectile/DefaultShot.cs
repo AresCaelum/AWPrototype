@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DefaultShot : Projectile {
-	static int numShot = 0;
+	static public int numShot = 0;
 
 	[SerializeField] float moveSpeed = 5.0f;
 	// Use this for initialization
