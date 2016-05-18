@@ -9,23 +9,21 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	private Vector3 curMouse;
 	private Vector3 preMouse;
 	private RectTransform rt;
-	private bool isDrag = false;
 
 	public bool IsDragging()
 	{
-		return isDrag;
+		return !(preMouse == curMouse);
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
-		isDrag = true;
 		rt = group.GetComponent<RectTransform>();
 	}
 	public void OnDrag(PointerEventData eventData)
 	{
 		preMouse = curMouse;
 		curMouse = Input.mousePosition;
-
+		
 		if (preMouse != Vector3.zero)
 		{
 			float dif = curMouse.x - preMouse.x;
@@ -38,7 +36,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	}
 	public void OnEndDrag(PointerEventData eventData)
 	{
-		isDrag = false;
 		preMouse = Vector3.zero;
 		curMouse = Vector3.zero;
 	}

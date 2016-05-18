@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour {
 	[SerializeField]
 	float TitleTransitionTime = 0.0f;
 	[SerializeField]
-	float startY = 0.0f;
+	float startY = -3000.0f;
 
 	float TitleTimer = 0.0f;
 	float totalTime = 0;
