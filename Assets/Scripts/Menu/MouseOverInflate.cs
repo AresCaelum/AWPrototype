@@ -24,8 +24,8 @@ public class MouseOverInflate : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         prevScale = transform.localScale;
         Vector3 scale = transform.localScale;
-        scale.x *= incAmount;
-        scale.y *= incAmount;
+        scale.x = incAmount;
+        scale.y = incAmount;
         transform.localScale = scale;
 		mouseOver = true;
     }

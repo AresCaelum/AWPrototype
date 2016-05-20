@@ -4,13 +4,16 @@ using System.Collections;
 public class PickUp : MovableEntity {
 	[SerializeField] GameObject powerUpObject;
 	[SerializeField] AudioClip pickUpSound;
+	[SerializeField] float Gravity = 2.5f;
 	// Use this for initialization
 	protected override void Start () {
+		myBody.gravityScale = Gravity;
 	}
 	
 	// Update is called once per frame
 	protected override void Update () {
-	
+		myBody.MovePosition (new Vector2 (transform.position.x, transform.position.y - Gravity * Time.deltaTime));
+		base.Update ();
 	}
 
 	protected override void UpdateAnimation()

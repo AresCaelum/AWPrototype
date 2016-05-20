@@ -73,7 +73,10 @@ public class Player : MovableEntity {
 		if (WeaponPowerUp == null) {
 			Instantiate (baseBullet, firePoint.position, Quaternion.identity);
 		} else {
-			Instantiate (WeaponPowerUp.ProjectileObject, firePoint.position, Quaternion.identity);
+			if (WeaponPowerUp.canFire ()) {
+				Instantiate (WeaponPowerUp.ProjectileObject, firePoint.position, Quaternion.identity);
+				WeaponPowerUp.Fired ();
+			}
 		}
 	}
 

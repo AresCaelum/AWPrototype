@@ -4,7 +4,6 @@ using System.Collections;
 public class DefaultShot : Projectile {
 	static public int numShot = 0;
 
-	[SerializeField] float moveSpeed = 5.0f;
 	// Use this for initialization
 	protected override void Start () {
 		if (numShot > 0) {
@@ -18,7 +17,6 @@ public class DefaultShot : Projectile {
 
 	// Update is called once per frame
 	protected override void Update () {
-		myBody.MovePosition (new Vector2 (transform.position.x, transform.position.y + moveSpeed * Time.deltaTime));
 		base.Update ();
 	}
 

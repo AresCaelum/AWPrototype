@@ -77,6 +77,8 @@ public class Slime : Enemy{
 					leftSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 6));
 				else
 					leftSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 6));
+
+				leftSlimeScript.powerUpOnDeath = null;
 			}
 			if (rightSlimeScript) {
 				rightSlimeScript.SetSize (mySize - 1);
@@ -84,10 +86,11 @@ public class Slime : Enemy{
 					rightSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 6));
 				else
 					rightSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 6));
+				rightSlimeScript.powerUpOnDeath = null;
 			}
 		}
 
-		Destroy (this.gameObject);
+		HandleDeath ();
 	}
 
 	public void SetSize(SlimeSize newSize)

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Enemy : MovableEntity {
 
+	[SerializeField] protected GameObject powerUpOnDeath;
+
 	// Use this for initialization
 	protected override void Start () {
 		base.Start ();
@@ -25,5 +27,13 @@ public class Enemy : MovableEntity {
 	protected virtual void HandleAI()
 	{
 		
+	}
+
+	protected void HandleDeath()
+	{
+		if (powerUpOnDeath != null) {
+			Instantiate (powerUpOnDeath, transform.position, powerUpOnDeath.transform.rotation);
+		}
+		Destroy (this.gameObject);
 	}
 }
