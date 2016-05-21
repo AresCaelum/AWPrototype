@@ -11,7 +11,6 @@ public class HomingMissile : Projectile {
 		GameObject[] temp = GameObject.FindGameObjectsWithTag ("Enemy");
 		if (temp != null) {
 			target = temp[Random.Range (0, temp.Length)].transform;
-			Debug.Log (target.gameObject.name);
 		}
 		base.Start ();
 	}
@@ -32,7 +31,7 @@ public class HomingMissile : Projectile {
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag != "Player") {
+		if (col.tag == "Enemy" || col.tag == "Platform") {
 			Destroy(this.gameObject);
 		}
 	}

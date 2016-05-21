@@ -45,21 +45,22 @@ public class Player : MovableEntity {
 	protected virtual void HandleInput()
 	{
 		myBody.angularVelocity = 0.0f;
+		velocity = Vector2.zero;
+		shooting = false;
 
-		if (Input.GetMouseButton (0)) {
-			if (Input.mousePosition.y < Screen.height * 0.25) {
-				velocity = Vector2.zero;
-				shooting = true;
-			} else {
-				if (Input.mousePosition.x < Screen.width * 0.5f)
-					velocity.x = -1;
-				else
-					velocity.x = 1;
-
-				shooting = false;
+		if (Input.touchCount > 0) {
+			Vector2 touchPoint= Input.GetTouch (0).position;
+			if (touchPoint.y < Screen.height * 0.75) {
+				if (Input.touchCount > 1) {
+					shooting = true;
+				} else {
+					if (touchPoint.x < Screen.width * 0.5f)
+						velocity.x = -1;
+					else
+						velocity.x = 1;
+				}
 			}
 		} else {
-			
 			velocity.x = Input.GetAxisRaw("Horizontal");
 			shooting = Input.GetKeyDown(KeyCode.Space);
 		}
@@ -71,7 +72,8 @@ public class Player : MovableEntity {
 	public void Fire()
 	{
 		if (WeaponPowerUp == null) {
-			Instantiate (baseBullet, firePoint.position, Quaternion.identity);
+			GameObject temp = Instantiate (baseBullet, firePoint.position, Quaternion.identity) as GameObject;
+			Destroy (temp, 3.0f);
 		} else {
 			if (WeaponPowerUp.canFire ()) {
 				Instantiate (WeaponPowerUp.ProjectileObject, firePoint.position, Quaternion.identity);

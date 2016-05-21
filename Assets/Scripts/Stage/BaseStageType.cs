@@ -9,7 +9,6 @@ public class BaseStageType : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameManager.started_game = false;
-		DefaultShot.numShot = 0;
 	}
 	
 	// Update is called once per frame

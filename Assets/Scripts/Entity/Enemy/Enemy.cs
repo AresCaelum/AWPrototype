@@ -32,7 +32,8 @@ public class Enemy : MovableEntity {
 	protected void HandleDeath()
 	{
 		if (powerUpOnDeath != null) {
-			Instantiate (powerUpOnDeath, transform.position, powerUpOnDeath.transform.rotation);
+			GameObject temp = Instantiate (powerUpOnDeath, transform.position, powerUpOnDeath.transform.rotation) as GameObject;
+			Destroy (temp, 15.0f);
 		}
 		Destroy (this.gameObject);
 	}

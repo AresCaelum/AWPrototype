@@ -9,6 +9,7 @@ public class Slime : Enemy{
 	[SerializeField]SlimeSize mySize = SlimeSize.BIG;
 	[SerializeField]Vector2 startingVelocity;
 
+
 	float fLastYVelocity = 0.0f;
 	bool initialized = false;
 
@@ -63,29 +64,44 @@ public class Slime : Enemy{
 	void CreateChildren()
 	{
 		if (mySize != SlimeSize.SMALL) {
+			Color color = gameObject.GetComponent<SpriteRenderer> ().color;
+
 			Vector3 offset = new Vector3 (0.1f, 0.0f, 0.1f);
 			GameObject rightSlime = Instantiate (this.gameObject, transform.position + offset, Quaternion.identity) as GameObject;
 			GameObject leftSlime = Instantiate (this.gameObject, transform.position - offset, Quaternion.identity) as GameObject;
 			rightSlime.name = leftSlime.name = this.gameObject.name;
 
-			Slime leftSlimeScript = leftSlime.GetComponent<Slime> ();
-			Slime rightSlimeScript = rightSlime.GetComponent<Slime> ();
+			Slime leftSlimeScript = null;
+			Slime rightSlimeScript = null;
 
-			if (leftSlimeScript) {
+			if (leftSlime != null) {
+				leftSlimeScript = leftSlime.GetComponent<Slime> ();
+				SpriteRenderer lsRenderer = leftSlime.GetComponent<SpriteRenderer> ();
+				if (lsRenderer != null)
+					lsRenderer.color = color;
+			}
+			if (rightSlime != null) {
+				rightSlimeScript = rightSlime.GetComponent<Slime> ();
+				SpriteRenderer rsRenderer = rightSlime.GetComponent<SpriteRenderer> ();
+				if (rsRenderer != null)
+					rsRenderer.color = color;
+			}
+
+			if (leftSlimeScript != null) {
 				leftSlimeScript.SetSize (mySize - 1);
 				if (myBody.velocity.x < 0)
-					leftSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 6));
+					leftSlimeScript.SetVelocity (new Vector2((myBody.velocity.x != 0.0f ? myBody.velocity.x : -2.0f), 6));
 				else
-					leftSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 6));
+					leftSlimeScript.SetVelocity (new Vector2((myBody.velocity.x != 0.0f ? -myBody.velocity.x : -2.0f), 6));
 
 				leftSlimeScript.powerUpOnDeath = null;
 			}
-			if (rightSlimeScript) {
+			if (rightSlimeScript != null) {
 				rightSlimeScript.SetSize (mySize - 1);
 				if (myBody.velocity.x > 0)
-					rightSlimeScript.SetVelocity (new Vector2(myBody.velocity.x, 6));
+					rightSlimeScript.SetVelocity (new Vector2((myBody.velocity.x != 0.0f ? myBody.velocity.x : 2.0f), 6));
 				else
-					rightSlimeScript.SetVelocity (new Vector2(-myBody.velocity.x, 6));
+					rightSlimeScript.SetVelocity (new Vector2((myBody.velocity.x != 0.0f ? -myBody.velocity.x : 2.0f), 6));
 				rightSlimeScript.powerUpOnDeath = null;
 			}
 		}

@@ -2,16 +2,14 @@
 using System.Collections;
 
 public class DefaultShot : Projectile {
-	static public int numShot = 0;
-
+	static DefaultShot instance = null;
 	// Use this for initialization
 	protected override void Start () {
-		if (numShot > 0) {
-			Debug.Log (numShot);
+		if(instance != null){
 			Destroy (this.gameObject);
 			return;
 		}
-		numShot++;
+		instance = this;
 		base.Start ();
 	}
 
@@ -27,14 +25,19 @@ public class DefaultShot : Projectile {
 
 	void HandleDeath()
 	{
-		numShot--;
 		Destroy (this.gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag != "Player") {
+		if (col.tag == "Enemy" || col.tag == "Platform") {
 			HandleDeath ();
 		}
+	}
+
+	void OnDestroy()
+	{
+		if(instance == this)
+			instance = null;
 	}
 }
