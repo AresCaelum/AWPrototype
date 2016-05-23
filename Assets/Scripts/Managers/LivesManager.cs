@@ -106,8 +106,10 @@ public class LivesManager : MonoBehaviour {
 
 	void OnDestroy()
 	{
-		if(instance != null)
+		if (instance != null) {
 			instance.SavePrefs ();
+			PlayerPrefs.SetInt ("NewsClose", 0);
+		}
 	}
 
 	public int GetLives()  {

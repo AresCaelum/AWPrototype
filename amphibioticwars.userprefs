@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Helpers\UniverseSelect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\News.cs">
     <Files>
-      <File FileName="Assets\Scripts\Helpers\WorldUV.cs" Line="18" Column="93" />
+      <File FileName="Assets\Facebook.cs" Line="3" Column="1" />
+      <File FileName="Assets\Scripts\Helpers\WorldUV.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\AudioManagers\AudioManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scenes\MainMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="1" Column="1" />
@@ -20,9 +21,10 @@
       <File FileName="Assets\Scripts\Stage\BaseStageType.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scenes\Options.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\HowToPlay.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helpers\UniverseSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Helpers\UniverseSelect.cs" Line="26" Column="37" />
       <File FileName="Assets\Scripts\Scenes\GameMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\GravityEffect.cs" Line="1" Column="1" />
+      <File FileName="Assets\News.cs" Line="28" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
