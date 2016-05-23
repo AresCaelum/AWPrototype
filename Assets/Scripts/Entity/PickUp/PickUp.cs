@@ -25,7 +25,7 @@ public class PickUp : MovableEntity {
 	{
 		if (col.gameObject.tag == "Player") {
 			if (powerUpObject != null) {
-				GameObject temp = Instantiate (powerUpObject, new Vector3 (100, 100, 1), Quaternion.identity) as GameObject;
+				GameObject temp = Instantiate (powerUpObject, Vector3.zero, Quaternion.identity) as GameObject;
 				PowerUpObject puObject = temp.GetComponent<PowerUpObject> ();
 				if (puObject != null) {
 					if (Player.instance != null) {

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StaticPlatform : StaticEntity {
 	[SerializeField] GameObject PowerUpToSpawn;
+	[SerializeField] float lifeTimeOfSpawn = 15.0f;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,8 +17,8 @@ public class StaticPlatform : StaticEntity {
 	void HandleDeath()
 	{
 		if (PowerUpToSpawn != null) {
-			GameObject temp = Instantiate (PowerUpToSpawn, transform.position, Quaternion.identity) as GameObject;
-			Destroy (temp, 15.0f);
+			GameObject temp = Instantiate (PowerUpToSpawn, transform.position, PowerUpToSpawn.transform.rotation) as GameObject;
+			Destroy (temp, lifeTimeOfSpawn);
 		}	
 		Destroy (gameObject);
 	}
