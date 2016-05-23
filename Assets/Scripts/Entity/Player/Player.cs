@@ -7,7 +7,7 @@ public class Player : MovableEntity {
 	[SerializeField]GameObject deathScene;
 	[SerializeField]GameObject baseBullet;
 	[SerializeField]Transform firePoint;
-	PowerUpObject WeaponPowerUp;
+	[SerializeField]PowerUpObject WeaponPowerUp;
 
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
@@ -76,8 +76,7 @@ public class Player : MovableEntity {
 			Destroy (temp, 3.0f);
 		} else {
 			if (WeaponPowerUp.canFire ()) {
-				Instantiate (WeaponPowerUp.ProjectileObject, firePoint.position, Quaternion.identity);
-				WeaponPowerUp.Fired ();
+				WeaponPowerUp.Fire (firePoint.position);
 			}
 		}
 	}
@@ -95,7 +94,7 @@ public class Player : MovableEntity {
 	{
 		if (WeaponPowerUp) {
 			// Add Remove old powerup
-			powerUp.DestroySelf();
+			WeaponPowerUp.DestroySelf();
 		}
 		WeaponPowerUp = powerUp;
 	}

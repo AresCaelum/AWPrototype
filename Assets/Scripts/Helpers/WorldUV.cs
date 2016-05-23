@@ -15,7 +15,7 @@ public class WorldUV : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        myRenderer.material.SetTextureOffset("_MainTex", new Vector2(-transform.position.x + transform.localScale.x * 0.5f, -transform.position.y + transform.localScale.y * 0.5f));
+        myRenderer.material.SetTextureOffset("_MainTex", new Vector2(-transform.position.x - transform.localScale.x * 0.5f, -transform.position.y + transform.localScale.y * 0.5f));
     }
 
     public void SetTexture(Texture _texture)

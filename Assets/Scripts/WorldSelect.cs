@@ -21,19 +21,9 @@ public class WorldSelect : MonoBehaviour {
 
 	public void selectWorld()
 	{
-
-		DragHandler dh = GetComponent<DragHandler>();
-		if(dh)
-		{
-			// Has DragHandler
-			if(!dh.IsDragging())
-			{
-				if (LivesManager.instance.CanPlay ()) {
-					UniverseManager.world_selected = world;
-					SceneManager.LoadScene ("Universe_" + UniverseManager.universe_selected + "_" + world.ToString () + "_1");
-				}
-			}
+		if (LivesManager.instance.CanPlay ()) {
+			UniverseManager.world_selected = world;
+			SceneManager.LoadScene ("Universe_" + UniverseManager.universe_selected + "_" + world.ToString () + "_1");
 		}
-
 	}
 }

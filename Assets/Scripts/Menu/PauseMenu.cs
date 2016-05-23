@@ -11,7 +11,8 @@ public class PauseMenu : MonoBehaviour {
 
 	public void Exit()
 	{
-		LivesManager.instance.LostLife ();
+		if(GameManager.started_game)
+			LivesManager.instance.LostLife ();
 		GameManager.reset ();
 		SceneManager.LoadScene ("GameMenu");
 	}
@@ -19,7 +20,8 @@ public class PauseMenu : MonoBehaviour {
 	public void Retry()
 	{
 		if (LivesManager.instance.CanPlay ()) {
-			LivesManager.instance.LostLife ();
+			if(GameManager.started_game)
+				LivesManager.instance.LostLife ();
 			GameManager.reset ();
 			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 		}
