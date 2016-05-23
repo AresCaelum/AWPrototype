@@ -23,4 +23,5 @@ public class GameManager{
 		enemy_count = 0;
 		Time.timeScale = 1.0f;
 	}
+
 }
