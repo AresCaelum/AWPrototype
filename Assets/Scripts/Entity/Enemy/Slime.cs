@@ -14,13 +14,13 @@ public class Slime : Enemy{
 	bool initialized = false;
 
 	// Use this for initialization
-	protected override void Start () {
+	override protected void Start () {
 		GameManager.enemy_count++;
 		base.Start ();
 	}
 
 	// Update is called once per frame
-	protected override void Update () {
+	override protected void Update () {
 		if (!GameManager.started_game) {
 			myBody.gravityScale = 0;
 			return;
@@ -36,13 +36,13 @@ public class Slime : Enemy{
 		base.Update ();
 	}
 
-	protected override void UpdateAnimation ()
+	override protected void UpdateAnimation ()
 	{
 		myAnimator.SetFloat ("Velocity", myBody.velocity.y);
 		base.UpdateAnimation ();
 	}
 
-	protected virtual void HandleAI()
+	override protected void HandleAI()
 	{
 		if (fLastYVelocity < 0 && myBody.velocity.y > 0 && bounceSound) {
 			AudioManager.PlaySFX (bounceSound);
@@ -53,6 +53,7 @@ public class Slime : Enemy{
 		if (Input.GetKeyDown (KeyCode.K)) {
 			CreateChildren ();
 		}
+		base.HandleAI ();
 	}
 
 	void OnDestroy()

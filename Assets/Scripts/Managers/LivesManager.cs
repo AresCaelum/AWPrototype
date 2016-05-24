@@ -95,7 +95,6 @@ public class LivesManager : MonoBehaviour {
 
 	public void SavePrefs()
 	{
-		System.DateTime now = System.DateTime.UtcNow;
 		PlayerPrefs.SetInt ("TimeClosed", getSecondsNow());
 		PlayerPrefs.SetInt ("MaxLives", maxLives);
 		PlayerPrefs.SetInt ("PlayerLives", currentLives);

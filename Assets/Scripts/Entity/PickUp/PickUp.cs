@@ -26,10 +26,10 @@ public class PickUp : MovableEntity {
 		if (col.gameObject.tag == "Player") {
 			if (powerUpObject != null) {
 				GameObject temp = Instantiate (powerUpObject, Vector3.zero, Quaternion.identity) as GameObject;
-				PowerUpObject puObject = temp.GetComponent<PowerUpObject> ();
+				WeaponPowerUp puObject = temp.GetComponent<WeaponPowerUp> ();
 				if (puObject != null) {
 					if (Player.instance != null) {
-						Player.instance.AddPowerUp (puObject);
+						Player.instance.AddWeaponPowerUp (puObject);
 					}
 				}
 			}

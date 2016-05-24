@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class PowerUpObject : StaticEntity {
-	public GameObject ProjectileObject;
 	[SerializeField] protected float lifeTime;
+	[SerializeField] protected Sprite UIicon;
+	[SerializeField] bool dies = true;
 	protected float lifeLeft = 0;
-	protected bool firable = true;
 
 	// Use this for initialization
 	override protected void Start () {
@@ -15,29 +15,25 @@ public class PowerUpObject : StaticEntity {
 	
 	// Update is called once per frame
 	override protected void Update () {
-		lifeLeft -= Time.deltaTime;
-		if (lifeLeft <= 0.0f) {
-			if(Player.instance != null)
-				Player.instance.RemovePowerUp ();
-			Destroy (this.gameObject);
+		if (dies) {
+			lifeLeft -= Time.deltaTime;
+			if (lifeLeft <= 0.0f) {
+				if (Player.instance != null)
+					Player.instance.RemovePowerUp ();
+				Destroy (this.gameObject);
+			}
 		}
-
 		base.Update ();
 	}
 
-	public bool canFire()
+	virtual public float getRatio()
 	{
-		return firable;
+		return 1.0f - (lifeLeft / lifeTime);
 	}
 
-	virtual public void Fire(Vector3 _position)
+	public Sprite getIcon()
 	{
-		Fired ();
-	}
-
-	virtual public void Fired()
-	{
-		firable = false;
+		return UIicon;
 	}
 
 	public void DestroySelf()

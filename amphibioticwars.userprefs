@@ -1,30 +1,31 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\News.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GameHud.cs">
     <Files>
-      <File FileName="Assets\Facebook.cs" Line="3" Column="1" />
+      <File FileName="Assets\Scripts\Entity\PowerUpObject\DefenseObject.cs" Line="9" Column="53" />
+      <File FileName="Assets\Scripts\Entity\Projectile\DefaultShot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Helpers\WorldUV.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\AudioManagers\AudioManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scenes\MainMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="119" Column="3" />
       <File FileName="Assets\Scripts\WorldSelect.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\PauseMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\DeathMenu.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\PlatformTypes\StaticPlatform.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\HomingMissileObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\PowerUpObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\PowerUpObject\PowerUpObject.cs" Line="32" Column="3" />
       <File FileName="Assets\Scripts\Entity\PickUp\PickUp.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\Projectile\HomingMissile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\Enemy\Enemy.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\Enemy\Slime.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Projectile\DefaultShot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Stage\BaseStageType.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scenes\Options.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Menu\HowToPlay.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helpers\UniverseSelect.cs" Line="26" Column="37" />
+      <File FileName="Assets\Scripts\Helpers\UniverseSelect.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Scenes\GameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\GravityEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets\News.cs" Line="28" Column="1" />
+      <File FileName="Assets\Scripts\Managers\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\LivesManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\PowerUpObject\WeaponPowerUp.cs" Line="34" Column="29" />
+      <File FileName="Assets\GameHud.cs" Line="23" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

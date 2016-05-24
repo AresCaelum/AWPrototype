@@ -15,7 +15,12 @@ public class News : MonoBehaviour {
 		//StartCoroutine (getNews());
 
 		// Temporary until I can figure out why I can't upload txt and html documents
-		newText.text = 	"May 23, 2016\n" +
+		newText.text = 	"May 23, 2016: Update 2\n" +
+						"Added UI to show cooldown on weapons.\n" +
+						"Added new defense powerup placed on stage 5.\n" +
+						"Removed some extra powerups.\n" +
+						"\n" +
+						"May 23, 2016:\n" +
 						"Added:\n" +
 						"This news system.\n" +
 						"Facebook button.";

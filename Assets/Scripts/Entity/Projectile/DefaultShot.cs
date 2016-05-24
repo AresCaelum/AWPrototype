@@ -2,14 +2,9 @@
 using System.Collections;
 
 public class DefaultShot : Projectile {
-	static DefaultShot instance = null;
+
 	// Use this for initialization
 	protected override void Start () {
-		if(instance != null){
-			Destroy (this.gameObject);
-			return;
-		}
-		instance = this;
 		base.Start ();
 	}
 
@@ -37,7 +32,5 @@ public class DefaultShot : Projectile {
 
 	void OnDestroy()
 	{
-		if(instance == this)
-			instance = null;
 	}
 }

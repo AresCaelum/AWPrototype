@@ -5,13 +5,12 @@ public class Player : MovableEntity {
 	static public Player instance;
 	[SerializeField]Vector2 moveSpeed = Vector2.zero;
 	[SerializeField]GameObject deathScene;
-	[SerializeField]GameObject baseBullet;
+	[SerializeField]WeaponPowerUp baseBullet;
+	[SerializeField]WeaponPowerUp weaponPowerUp;
 	[SerializeField]Transform firePoint;
-	[SerializeField]PowerUpObject WeaponPowerUp;
 
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
-	bool paused = false;
 	// Use this for initialization
 	protected override void Start () {
 		if (instance != null) {
@@ -29,9 +28,20 @@ public class Player : MovableEntity {
 			return;
 		
 		HandleInput ();
-
+		HandleUIUpdate ();
 
 		base.Update ();
+	}
+
+	void HandleUIUpdate()
+	{
+		if (weaponPowerUp == null) {
+			GameHud.UpdateWeaponIcon (baseBullet.getIcon ());
+			GameHud.HandleUIUpdateWeapon (baseBullet.getRatio ());
+		} else {
+			GameHud.UpdateWeaponIcon (weaponPowerUp.getIcon ());
+			GameHud.HandleUIUpdateWeapon (weaponPowerUp.getRatio ());
+		}
 	}
 
 	protected override void UpdateAnimation()
@@ -71,13 +81,12 @@ public class Player : MovableEntity {
 	// Gets called by the animator
 	public void Fire()
 	{
-		if (WeaponPowerUp == null) {
-			GameObject temp = Instantiate (baseBullet, firePoint.position, Quaternion.identity) as GameObject;
-			Destroy (temp, 3.0f);
+		if (weaponPowerUp == null) {
+			if(baseBullet.canFire())
+				baseBullet.Fire (firePoint.position);
 		} else {
-			if (WeaponPowerUp.canFire ()) {
-				WeaponPowerUp.Fire (firePoint.position);
-			}
+			if(weaponPowerUp.canFire())
+				weaponPowerUp.Fire (firePoint.position);
 		}
 	}
 
@@ -90,15 +99,15 @@ public class Player : MovableEntity {
 		}
 	}
 
-	public void AddPowerUp(PowerUpObject powerUp)
+	public void AddWeaponPowerUp(PowerUpObject powerUp)
 	{
-		if (WeaponPowerUp) {
+		if (weaponPowerUp) {
 			// Add Remove old powerup
-			WeaponPowerUp.DestroySelf();
+			weaponPowerUp.DestroySelf();
 		}
-		WeaponPowerUp = powerUp;
+		weaponPowerUp = (WeaponPowerUp)powerUp;
 	}
-
+		
 	void OnDestroy()
 	{
 		if (instance == this) {
@@ -108,6 +117,6 @@ public class Player : MovableEntity {
 
 	public void RemovePowerUp()
 	{
-		WeaponPowerUp = null;
+		weaponPowerUp = null;
 	}
 }

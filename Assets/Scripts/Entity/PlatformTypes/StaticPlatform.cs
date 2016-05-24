@@ -5,13 +5,13 @@ public class StaticPlatform : StaticEntity {
 	[SerializeField] GameObject PowerUpToSpawn;
 	[SerializeField] float lifeTimeOfSpawn = 15.0f;
 	// Use this for initialization
-	void Start () {
-	
+	override protected void Start () {
+		base.Start ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	override protected void Update () {
+		base.Update ();
 	}
 
 	void HandleDeath()

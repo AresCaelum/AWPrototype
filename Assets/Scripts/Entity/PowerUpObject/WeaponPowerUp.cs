@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
-public class HomingMissileObject : PowerUpObject {
-	[SerializeField]float fireRate;
-	[SerializeField]Image displayIcon;
-
-	float fireTimer = 0.0f;
+public class WeaponPowerUp : PowerUpObject {
+	[SerializeField]protected float fireRate;
+	[SerializeField]protected GameObject ProjectileObject;
+	protected float fireTimer = 0.0f;
+	protected bool firable = true;
 
 	// Use this for initialization
 	override protected void Start () {
 		base.Start ();
 	}
-
+	
 	// Update is called once per frame
 	override protected void Update () {
 		if (fireTimer > 0.0f) {
@@ -23,24 +22,28 @@ public class HomingMissileObject : PowerUpObject {
 				firable = true;
 			}
 		}
-		displayIcon.material.SetFloat ("_Cutoff", lifeLeft / lifeTime);
 		base.Update ();
 	}
 
-	override public void Fire(Vector3 _position)
+	virtual public void Fire(Vector3 _position)
 	{
 		Instantiate (ProjectileObject, _position, Quaternion.identity);
-		base.Fire(_position);
+		Fired ();
 	}
 
-	override public void Fired()
+	virtual public void Fired()
 	{
 		fireTimer = fireRate;
-		base.Fired ();
+		firable = false;
 	}
 
-	public void DestroySelf()
+	override public float getRatio()
 	{
-		Destroy (this.gameObject);
+		return 1.0f - (fireTimer / fireRate);
+	}
+
+	virtual public  bool canFire()
+	{
+		return firable;
 	}
 }
