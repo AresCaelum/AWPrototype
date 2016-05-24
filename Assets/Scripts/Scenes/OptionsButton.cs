@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class OptionsButton : MonoBehaviour {
-	public AudioClip menuSound;
+	public AudioClip menuSound = null;
 	public GameObject optionsScreen;
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -18,7 +18,8 @@ public class OptionsButton : MonoBehaviour {
 	{
 		if(optionsScreen != null)
 		{
-			AudioManager.PlaySFX (menuSound);
+			if(menuSound != null)
+				AudioManager.PlaySFX (menuSound);
 			Instantiate(optionsScreen, Vector3.zero, Quaternion.identity);
 		}
 	}

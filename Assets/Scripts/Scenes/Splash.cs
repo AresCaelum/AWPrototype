@@ -28,7 +28,9 @@ public class Splash : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.anyKeyDown) {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.Quit ();
+		} else if (Input.anyKeyDown) {
 			SceneManager.LoadScene ("MainMenu");
 		} else if (fadeInTimer > 0) {
 			
