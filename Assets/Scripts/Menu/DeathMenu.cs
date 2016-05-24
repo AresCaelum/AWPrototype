@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class DeathMenu : MonoBehaviour {
-
 	public void Exit()
 	{
 		GameManager.reset ();

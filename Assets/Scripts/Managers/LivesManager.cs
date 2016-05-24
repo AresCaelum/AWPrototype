@@ -107,7 +107,6 @@ public class LivesManager : MonoBehaviour {
 	{
 		if (instance != null) {
 			instance.SavePrefs ();
-			PlayerPrefs.SetInt ("NewsClose", 0);
 		}
 	}
 
