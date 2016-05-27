@@ -7,30 +7,40 @@ public class Obobo : MonoBehaviour
 {
     [SerializeField]
     GameObject slime;
-    GameObject player;
     [SerializeField]
     GameObject explosion;
     [SerializeField]
     GameObject deathExplosion;
+    [SerializeField]
+    GameObject ShieldPowerup;
 
     [SerializeField]
     RectTransform HP_BAR;
 
     OBOBO_STATES CurrentState = OBOBO_STATES.MOVEMENT;
+    [SerializeField]
     MOVE_DIRECTIONS CurrentDirection = MOVE_DIRECTIONS.RIGHT;
 
-    int SlimesToSpawn = 2;
+    [SerializeField]
+    int SlimesToSpawn = 1;
 
     [SerializeField]
     float HEALTH = 100.0f;
     float MoveSpeed = 5.0f;
     float maxUpAndDown = 1;
+    [SerializeField]
     float speed = 500;
+    [SerializeField]
+    float XdistanceToTravel = 5;
     float angle = -90;
     float toDegrees = Mathf.PI / 180;
     float startHeight;
     float TimerToSpawn;
-    float DefaultTimerToSpawn = 10.0f;
+    float DefaultTimerToSpawn = 2.0f;
+
+    bool Flashing = false;
+    bool Dieing = false;
+    bool SpawnSlimeOnLeftSide = true;
 
     Vector2 goalLeft;
     Vector2 goalRight;
@@ -45,7 +55,6 @@ public class Obobo : MonoBehaviour
     AudioClip HitSFX;
     [SerializeField]
     AudioClip SpawnSFX;
-    bool Flashing = false;
     // Use this for initialization
     void Start()
     {
@@ -54,26 +63,27 @@ public class Obobo : MonoBehaviour
 
         TimerToSpawn = DefaultTimerToSpawn;
         startHeight = transform.localPosition.y;
-        player = GameObject.Find("Player");
-        goalLeft = new Vector2(transform.position.x - 5, 0);
-        goalRight = new Vector2(transform.position.x + 5, 0);
+        goalLeft = new Vector2(transform.position.x - XdistanceToTravel, 0);
+        goalRight = new Vector2(transform.position.x + XdistanceToTravel, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        TimerToSpawn -= Time.deltaTime;
+        if (GameManager.started_game)
+            TimerToSpawn -= Time.deltaTime;
         if (TimerToSpawn <= 0.0f)
         {
             CurrentState = OBOBO_STATES.SPAWN;
-            TimerToSpawn = DefaultTimerToSpawn;
+            TimerToSpawn = DefaultTimerToSpawn + TimerToSpawn;
         }
         switch (CurrentState)
         {
             case OBOBO_STATES.MOVEMENT:
                 {
                     angle += speed * Time.deltaTime;
-                    if (angle > 270) angle -= 360;
+                    if (angle > 270)
+                        angle -= 360;
                     float Yvalue = startHeight + maxUpAndDown * (1 + Mathf.Sin(angle * toDegrees));
                     transform.localPosition = new Vector2(transform.localPosition.x, Yvalue);
 
@@ -81,14 +91,14 @@ public class Obobo : MonoBehaviour
                     {
                         goalRight = new Vector2(goalRight.x, transform.position.y);
                         transform.position = Vector2.MoveTowards(transform.position, goalRight, MoveSpeed * Time.smoothDeltaTime);
-                        if (transform.position.x == goalRight.x)
+                        if (transform.position.x >= goalRight.x)
                             CurrentDirection = MOVE_DIRECTIONS.LEFT;
                     }
                     else if (CurrentDirection == MOVE_DIRECTIONS.LEFT)
                     {
                         goalLeft = new Vector2(goalLeft.x, transform.position.y);
                         transform.position = Vector2.MoveTowards(transform.position, goalLeft, MoveSpeed * Time.smoothDeltaTime);
-                        if (transform.position.x == goalLeft.x)
+                        if (transform.position.x <= goalLeft.x)
                             CurrentDirection = MOVE_DIRECTIONS.RIGHT;
                     }
 
@@ -96,12 +106,19 @@ public class Obobo : MonoBehaviour
                 }
             case OBOBO_STATES.SPAWN:
                 {
-                    bool leftSide = true;
-                    for (int i = 0; i < SlimesToSpawn; i++)
+                    if (!Dieing)
                     {
-                        SpawnSlime(leftSide);
-                        leftSide = !leftSide;
+                        for (int i = 0; i < SlimesToSpawn; i++)
+                        {
+                            SpawnSlime(SpawnSlimeOnLeftSide);
+                            SpawnSlimeOnLeftSide = !SpawnSlimeOnLeftSide;
+                        }
                     }
+                    break;
+                }
+            default:
+                {
+
                     break;
                 }
         }
@@ -150,7 +167,10 @@ public class Obobo : MonoBehaviour
         else
             Pos.x += 1;
 
-        Slime temp = (Instantiate(slime, Pos, slime.transform.rotation) as GameObject).GetComponent<Slime>();
+        GameObject tempSlime = Instantiate(slime, Pos, slime.transform.rotation) as GameObject;
+        Slime temp = null;
+        if (tempSlime)
+            temp = tempSlime.GetComponent<Slime>();
     }
 
     IEnumerator StageDeath()
@@ -163,8 +183,15 @@ public class Obobo : MonoBehaviour
         float spawn = 0.1f;
         float color = 1.0f;
         Vector2 pos;
-        SpriteRenderer myRenderer = GetComponent<SpriteRenderer>();
-        SpriteRenderer myPupilRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        SpriteRenderer myRenderer = null;
+        SpriteRenderer myPupilRenderer = null;
+        if (GetComponent<SpriteRenderer>())
+            myRenderer = GetComponent<SpriteRenderer>();
+
+        if (transform.GetChild(0) == null)
+            Debug.Log("Obobo.cs: Line 181 - GetChild(0) is null");
+        else
+            myPupilRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         while (elapsed < duration)
         {
             spawn -= Time.deltaTime;
@@ -173,20 +200,32 @@ public class Obobo : MonoBehaviour
                 pos.x = transform.position.x + (Random.value * 2 - 1);
                 pos.y = transform.position.y + (Random.value * 2 - 1);
 
-                AudioManager.PlaySFX(ExplosionSFX);
-                Instantiate(explosion, pos, explosion.transform.rotation);
+                if (explosion != null)
+                {
+                    AudioManager.PlaySFX(ExplosionSFX);
+                    Instantiate(explosion, pos, explosion.transform.rotation);
+                }
+
                 spawn = 0.1f;
             }
 
             color -= Time.deltaTime * 0.5f;
-            myRenderer.color = new Color(color, color, color, color);
-            myPupilRenderer.color = new Color(color, color, color, color);
+            if (myRenderer)
+                myRenderer.color = new Color(color, color, color, color);
+            if (myPupilRenderer)
+                myPupilRenderer.color = new Color(color, color, color, color);
             elapsed += Time.deltaTime;
             yield return null;
         }
-        AudioManager.PlaySFX(FinalExplosionSFX);
-        pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
-        Instantiate(deathExplosion, transform.position, deathExplosion.transform.rotation);
+        if (deathExplosion != null)
+        {
+            AudioManager.PlaySFX(FinalExplosionSFX);
+            pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+            Instantiate(deathExplosion, transform.position, deathExplosion.transform.rotation);
+        }
+        if(ShieldPowerup)
+            Instantiate(ShieldPowerup, transform.position, ShieldPowerup.transform.rotation);
+
     }
 
     IEnumerator KillBoss()
