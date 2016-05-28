@@ -59,7 +59,8 @@ public class GameMenu : MonoBehaviour {
 			livesTemplate.rectTransform.anchoredPosition = Vector2.Lerp(new Vector2(0, startY), new Vector2(0, EndY), TitleTimer / TitleTransitionTime);
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space))
+		if (Input.GetKeyDown (KeyCode.Escape)) {
 			SceneManager.LoadScene ("MainMenu");
+		}
 	}
 }

@@ -8,7 +8,7 @@ public class News : MonoBehaviour {
 	[SerializeField] ScrollRect scrollHandle;
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefs.GetInt ("NewsClose", 0) == 1) {
+		if (PlayerPrefs.GetInt ("NewsClose", 0) == System.DateTime.Now.Day) {
 			Destroy (this.gameObject);
 			return;
 		}
@@ -41,9 +41,10 @@ public class News : MonoBehaviour {
 		contentSize.sizeDelta = new Vector2 (contentSize.sizeDelta.x, newText.preferredHeight + 16);
 		scrollHandle.verticalNormalizedPosition = 1;
 	}
+
 	public void Close()
 	{
-		PlayerPrefs.SetInt ("NewsClose", 1);
+		PlayerPrefs.SetInt ("NewsClose", System.DateTime.Now.Day);
 		Destroy (this.gameObject);
 	}
 }
