@@ -69,12 +69,28 @@ public class AudioManager : MonoBehaviour
     }
     static public void PlayBGM(AudioClip _Clip, bool _Restart = true)
     {
-        if (_Restart && instance.BackgroundMusic.isPlaying)
-            instance.BackgroundMusic.Stop();
-        instance.BackgroundMusic.clip = _Clip;
-        instance.BackgroundMusic.volume = MusicVolume * MasterVolume;
-        if (!instance.BackgroundMusic.isPlaying)
-            instance.BackgroundMusic.Play();
+		if (_Restart && instance.BackgroundMusic.isPlaying) 
+		{
+			instance.BackgroundMusic.Stop ();
+			instance.BackgroundMusic.clip = _Clip;
+			instance.BackgroundMusic.volume = MusicVolume * MasterVolume;
+			instance.BackgroundMusic.Play ();
+		} 
+		else if (!_Restart && instance.BackgroundMusic.isPlaying) 
+		{
+			if (instance.BackgroundMusic.clip == _Clip)
+				return;
+			instance.BackgroundMusic.Stop ();
+			instance.BackgroundMusic.clip = _Clip;
+			instance.BackgroundMusic.volume = MusicVolume * MasterVolume;
+			instance.BackgroundMusic.Play ();
+		} 
+		else 
+		{
+			instance.BackgroundMusic.clip = _Clip;
+			instance.BackgroundMusic.volume = MusicVolume * MasterVolume;
+			instance.BackgroundMusic.Play ();
+		} 
     }
     static public void TransitionBGM(AudioClip newClip)
     {

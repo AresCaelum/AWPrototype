@@ -36,6 +36,7 @@ public class Obobo : MonoBehaviour
     float toDegrees = Mathf.PI / 180;
     float startHeight;
     float TimerToSpawn;
+	[SerializeField]
     float DefaultTimerToSpawn = 2.0f;
 
     bool Flashing = false;

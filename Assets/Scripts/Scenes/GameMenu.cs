@@ -17,13 +17,17 @@ public class GameMenu : MonoBehaviour {
 	float startY = 0.0f;
 	[SerializeField]
 	GameObject displayTemplate;
+	[SerializeField]
+	AudioClip MenuMusic;
 
 	float TitleTimer = 0.0f;
 	float EndY = 0;
 	// Use this for initialization
 	void Start () {
-		if (instance != null)
+		if (instance != null) {
 			Destroy (this.gameObject);
+			return;
+		}
 
 		instance = this;
 
@@ -38,6 +42,9 @@ public class GameMenu : MonoBehaviour {
 		}
 
 		EndY = livesTemplate.rectTransform.anchoredPosition.y;
+		if (MenuMusic != null) {
+			AudioManager.PlayBGM (MenuMusic, false);
+		}
 	}
 	
 	// Update is called once per frame
