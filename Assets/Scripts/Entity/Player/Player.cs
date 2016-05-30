@@ -8,6 +8,7 @@ public class Player : MovableEntity {
 	[SerializeField]WeaponPowerUp baseBullet;
 	[SerializeField]WeaponPowerUp weaponPowerUp;
 	[SerializeField]Transform firePoint;
+	[SerializeField]Sprite_Reskin myReskin;
 
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
@@ -16,6 +17,10 @@ public class Player : MovableEntity {
 		if (instance != null) {
 			Destroy (this.gameObject);
 			return;
+		}
+
+		if (myReskin != null) {
+			myReskin.SpriteSheet = PlayerPrefs.GetString ("PlayerSkin", "Player");
 		}
 
 		instance = this;

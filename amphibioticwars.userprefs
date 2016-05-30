@@ -1,50 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TripleShotPowerUp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SkinSelection.cs">
     <Files>
-      <File FileName="Assets\TripleShotPowerUp.cs" Line="12" Column="37" />
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\WeaponPowerUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Audio\SoundEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scenes\Splash.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\News.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scenes\GameMenu.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Scenes\GameMenu.cs" Line="37" Column="35" />
-      <File FileName="Assets\PlayAudioOnDeath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\AdManager.cs" Line="1" Column="1" />
->>>>>>> f35b80394f65d305bf0d02e34042128479ef4470
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\DefenseObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Projectile\DefaultShot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helpers\WorldUV.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\AudioManagers\AudioManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scenes\MainMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WorldSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\PauseMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\DeathMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\PlatformTypes\StaticPlatform.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\PowerUpObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\PickUp\PickUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Projectile\HomingMissile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Enemy\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Enemy\Slime.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Stage\BaseStageType.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Scenes\Options.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\HowToPlay.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helpers\UniverseSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\LivesManager.cs" Line="1" Column="1" />
-<<<<<<< HEAD
-      <File FileName="Assets\Scripts\Managers\AdManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Managers\UniverseManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\BackToGameMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menu\GameHud.cs" Line="1" Column="1" />
-=======
-      <File FileName="Assets\Scripts\Entity\PowerUpObject\WeaponPowerUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Obobo.cs" Line="1" Column="1" />
->>>>>>> f35b80394f65d305bf0d02e34042128479ef4470
+      <File FileName="Assets\SkinSelection.cs" Line="42" Column="61" />
+      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="23" Column="61" />
+      <File FileName="Assets\Scripts\Entity\Sprite_Reskin.cs" Line="33" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
