@@ -24,7 +24,6 @@ public class Obobo : MonoBehaviour
     [SerializeField]
     int SlimesToSpawn = 1;
 
-    [SerializeField]
     float HEALTH = 100.0f;
     float MoveSpeed = 5.0f;
     float maxUpAndDown = 1;
