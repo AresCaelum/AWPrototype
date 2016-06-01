@@ -1,7 +1,8 @@
-﻿using UnityEngine; 
+﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MovableEntity {
+public class Player : MovableEntity 
+{
 	static public Player instance;
 	[SerializeField]Vector2 moveSpeed = Vector2.zero;
 	[SerializeField]GameObject deathScene;
@@ -13,25 +14,29 @@ public class Player : MovableEntity {
 	Vector2 velocity = Vector2.zero;
 	bool shooting = false;
 	// Use this for initialization
-	protected override void Start () {
-		if (instance != null) {
+	protected override void Start () 
+	{
+		if (instance != null) 
+		{
 			Destroy (this.gameObject);
 			return;
 		}
 
-		if (myReskin != null) {
+		if (myReskin != null) 
+		{
 			myReskin.SpriteSheet = PlayerPrefs.GetString ("PlayerSkin", "Player");
 		}
 
 		instance = this;
 		base.Start ();
 	}
-	
+
 	// Update is called once per frame
-	protected override void Update () {
+	protected override void Update () 
+	{
 		if (GameManager.paused || !GameManager.started_game)
 			return;
-		
+
 		HandleInput ();
 		HandleUIUpdate ();
 
@@ -40,10 +45,13 @@ public class Player : MovableEntity {
 
 	void HandleUIUpdate()
 	{
-		if (weaponPowerUp == null) {
+		if (weaponPowerUp == null) 
+		{
 			GameHud.UpdateWeaponIcon (baseBullet.getIcon ());
 			GameHud.HandleUIUpdateWeapon (baseBullet.getRatio ());
-		} else {
+		} 
+		else 
+		{
 			GameHud.UpdateWeaponIcon (weaponPowerUp.getIcon ());
 			GameHud.HandleUIUpdateWeapon (weaponPowerUp.getRatio ());
 		}
@@ -51,10 +59,10 @@ public class Player : MovableEntity {
 
 	protected override void UpdateAnimation()
 	{
-			myAnimator.SetFloat ("InputH", velocity.x);
-			myAnimator.SetBool ("Walk", velocity.x != 0);
-			myAnimator.SetBool ("Fire", shooting);
-			base.UpdateAnimation ();
+		myAnimator.SetFloat ("InputH", velocity.x);
+		myAnimator.SetBool ("Walk", velocity.x != 0);
+		myAnimator.SetBool ("Fire", shooting);
+		base.UpdateAnimation ();
 	}
 
 	protected virtual void HandleInput()
@@ -63,33 +71,42 @@ public class Player : MovableEntity {
 		velocity = Vector2.zero;
 		shooting = false;
 
-		if (Input.touchCount > 0) {
+		if (Input.touchCount > 0) 
+		{
 			Vector2 touchPoint= Input.GetTouch (0).position;
-			if (touchPoint.y < Screen.height * 0.75) {
-				if (Input.touchCount > 1) {
+			if (touchPoint.y < Screen.height * 0.75) 
+			{
+				if (Input.touchCount > 1) 
+				{
 					shooting = true;
-				} else {
+				} 
+				else 
+				{
 					if (touchPoint.x < Screen.width * 0.5f)
 						velocity.x = -1;
 					else
 						velocity.x = 1;
 				}
 			}
-		} else {
+		} 
+		else 
+		{
 			velocity.x = Input.GetAxisRaw("Horizontal");
 			shooting = Input.GetKeyDown(KeyCode.Space);
 		}
-			
+
 		myBody.MovePosition(new Vector2 (transform.position.x + velocity.x * moveSpeed.x * Time.deltaTime, transform.position.y + velocity.y * moveSpeed.y* Time.deltaTime));
 	}
 
 	// Gets called by the animator
 	public void Fire()
 	{
-		if (weaponPowerUp == null) {
+		if (weaponPowerUp == null) 
+		{
 			if(baseBullet.canFire())
 				baseBullet.Fire (firePoint.position);
-		} else {
+		} else 
+		{
 			if(weaponPowerUp.canFire())
 				weaponPowerUp.Fire (firePoint.position);
 		}
@@ -97,7 +114,8 @@ public class Player : MovableEntity {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Enemy" || col.gameObject.tag.Equals("EnemyProjectile") )
+		{
 			LivesManager.instance.LostLife ();
 			Instantiate (deathScene, Vector3.zero, Quaternion.identity);
 			Destroy (this.gameObject);
@@ -106,16 +124,18 @@ public class Player : MovableEntity {
 
 	public void AddWeaponPowerUp(PowerUpObject powerUp)
 	{
-		if (weaponPowerUp) {
+		if (weaponPowerUp) 
+		{
 			// Add Remove old powerup
 			weaponPowerUp.DestroySelf();
 		}
 		weaponPowerUp = (WeaponPowerUp)powerUp;
 	}
-		
+
 	void OnDestroy()
 	{
-		if (instance == this) {
+		if (instance == this) 
+		{
 			instance = null;
 		}
 	}

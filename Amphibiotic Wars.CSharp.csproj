@@ -73,7 +73,9 @@
     <Compile Include="Assets\Scripts\Entity\Base\Entity.cs" />
     <Compile Include="Assets\Scripts\Entity\Base\MovableEntity.cs" />
     <Compile Include="Assets\Scripts\Entity\Base\StaticEntity.cs" />
-    <Compile Include="Assets\Scripts\Entity\Enemy\Boss\Obobo.cs" />
+    <Compile Include="Assets\Scripts\Entity\Enemy\Boss\Obobo\Obobo.cs" />
+    <Compile Include="Assets\Scripts\Entity\Enemy\Boss\Ololo\Abilities\Illusion.cs" />
+    <Compile Include="Assets\Scripts\Entity\Enemy\Boss\Ololo\Ololo.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity\Enemy\Slime.cs" />
     <Compile Include="Assets\Scripts\Entity\PickUp\PickUp.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Assets\Scripts\Entity\PowerUpObject\PowerUpObject.cs" />
     <Compile Include="Assets\Scripts\Entity\PowerUpObject\WeaponPowerUp.cs" />
     <Compile Include="Assets\Scripts\Entity\Projectile\DefaultShot.cs" />
+    <Compile Include="Assets\Scripts\Entity\Projectile\FireBall.cs" />
     <Compile Include="Assets\Scripts\Entity\Projectile\HomingMissile.cs" />
     <Compile Include="Assets\Scripts\Entity\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Helpers\AutoDeath.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="Assets\Scripts\Scenes\Splash.cs" />
     <Compile Include="Assets\Scripts\Stage\BaseStageType.cs" />
     <Compile Include="Assets\Scripts\WorldSelect.cs" />
+    <Compile Include="Assets\TripleShotPowerUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Obelisk Forest Assets\Sources\Shaders\Grid.shader" />
