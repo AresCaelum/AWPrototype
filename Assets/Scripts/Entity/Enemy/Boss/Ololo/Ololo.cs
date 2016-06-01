@@ -164,7 +164,7 @@ public class Ololo : MonoBehaviour
             else
                 Yvalue = 1.25f;
 
-            float Xvalue = Random.Range(-5.0f, 5.0f);
+            float Xvalue = Random.Range(-7.5f, 7.5f);
             Vector2 Pos = new Vector2(Xvalue, Yvalue);
 
             if (Vector2.Distance(Pos, transform.position) > Radius)
@@ -213,7 +213,7 @@ public class Ololo : MonoBehaviour
                 Yvalue = Random.Range(0.0f, 2.5f);
             else
                 Yvalue = 1.25f;
-            Xvalue = Random.Range(-5.0f, 5.0f);
+            Xvalue = Random.Range(-7.5f, 7.5f);
             Vector2 Pos = new Vector2(Xvalue, Yvalue);
 
             bool Redo = false;
@@ -282,7 +282,7 @@ public class Ololo : MonoBehaviour
             temp = Instantiate(Fireball, transform.position, Fireball.transform.rotation) as GameObject;
 
         if (temp != null)
-            Destroy(temp, 2.0f);
+            Destroy(temp, 3.0f);
         FireTimer = DefaultFireTimer;
     }
 
@@ -296,7 +296,7 @@ public class Ololo : MonoBehaviour
             temp.transform.eulerAngles = new Vector3(0, 0, angle);
             temp.GetComponent<FireBall>().movespeed *= 0.5f;
             angle += 90;
-            Destroy(temp, 3.0f);
+            Destroy(temp, 5.0f);
         }
         FireTimer = DefaultFireTimer+1.0f;
     }

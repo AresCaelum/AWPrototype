@@ -15,12 +15,19 @@ public class News : MonoBehaviour {
 		//StartCoroutine (getNews());
 
 		// Temporary until I can figure out why I can't upload txt and html documents
-		newText.text = 	"May 23, 2016: Update 2\n" +
+		newText.text = 	"May 30, 2016:\n" +
+						"-------------\n" +
+						"Added a skin for the main character. (Tap the frog on the main menu).\n" +
+						"Added Functionality to ensure the play area that is visible in the camera is same across multiple devices.\n" +
+						"New Boss added.\n" +
+						"New PowerUp - MultiShot added.\n\n" +
+						"May 23, 2016: Update 2\n" +
+						"----------------------" +
 						"Added UI to show cooldown on weapons.\n" +
 						"Added new defense powerup placed on stage 5.\n" +
-						"Removed some extra powerups.\n" +
-						"\n" +
+						"Removed some extra powerups.\n\n" +
 						"May 23, 2016:\n" +
+						"-------------\n" +
 						"Added:\n" +
 						"This news system.\n" +
 						"Facebook button.";
