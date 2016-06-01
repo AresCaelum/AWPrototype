@@ -22,18 +22,25 @@ public class SkinSelection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.touchCount > 0) {
+			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+				Ray ray = Camera.main.ScreenPointToRay (Input.GetTouch (0).position);
+				RaycastHit hit;
+				if (Physics.Raycast (ray, out hit)) {
+					if (hit.transform.gameObject == this.gameObject) {
+						nCurrent++;
+						if (nCurrent > SkinSelections.Length) {
+							nCurrent = 0;
+						}
+					}
+				}
+			}
+		}
 		if (SkinSelections.Length > 0) {
 			if (myReskin != null) {
 				myReskin.SpriteSheet = SkinSelections[nCurrent].name;
 			}
 		}
-	}
-
-	void OnMouseUp()
-	{
-		nCurrent++;
-		if (nCurrent >= SkinSelections.Length)
-			nCurrent = 0;
 	}
 
 	void OnDestroy()
