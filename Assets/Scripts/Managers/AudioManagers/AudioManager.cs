@@ -17,10 +17,12 @@ public class AudioManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
+		if (instance == null)
+			instance = this;
+		else {
+			Destroy (this.gameObject);
+			return;
+		}
 
         DontDestroyOnLoad(this);
         MasterVolume = PlayerPrefs.GetFloat("masterVolume", 1.0f);
