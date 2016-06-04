@@ -18,18 +18,8 @@ public class DefaultShot : Projectile {
 		base.UpdateAnimation ();
 	}
 
-	void HandleDeath()
-	{
-		Destroy (this.gameObject);
-	}
 
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.tag == "Enemy" || col.tag == "Platform") {
-			HandleDeath ();
-		}
-	}
-
+		
 	void OnDestroy()
 	{
 	}

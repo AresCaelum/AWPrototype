@@ -68,7 +68,9 @@ public class AudioManager : MonoBehaviour
         }
     }
     static public void PlayBGM(AudioClip _Clip, bool _Restart = true)
-    {
+	{
+		if (instance == null)
+			return;
 		if (_Restart && instance.BackgroundMusic.isPlaying) 
 		{
 			instance.BackgroundMusic.Stop ();

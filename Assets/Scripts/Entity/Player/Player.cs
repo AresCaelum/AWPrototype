@@ -112,14 +112,12 @@ public class Player : MovableEntity
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	protected override IEnumerator HandleDeathAnimation()
 	{
-		if (col.gameObject.tag == "Enemy" || col.gameObject.tag.Equals("EnemyProjectile") )
-		{
-			LivesManager.instance.LostLife ();
-			Instantiate (deathScene, Vector3.zero, Quaternion.identity);
-			Destroy (this.gameObject);
-		}
+		LivesManager.instance.LostLife ();
+		Instantiate (deathScene, Vector3.zero, Quaternion.identity);
+		Destroy (this.gameObject);
+		yield return new WaitForEndOfFrame ();
 	}
 
 	public void AddWeaponPowerUp(PowerUpObject powerUp)

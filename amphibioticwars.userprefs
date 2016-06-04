@@ -1,14 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Entity\Enemy\Boss\Ololo\Ololo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Entity\Enemy\Boss\Obobo\Obobo.cs">
     <Files>
-      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="110" Column="31" />
-      <File FileName="Assets\Scripts\Menu\News.cs" Line="26" Column="40" />
+      <File FileName="Assets\Scripts\Entity\Base\Entity.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Player\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menu\News.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Entity\Sprite_Reskin.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RegenLives.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SkinSelection.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Ololo\Ololo.cs" Line="291" Column="32" />
-      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Ololo\Abilities\Illusion.cs" Line="103" Column="20" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Ololo\Ololo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Ololo\Abilities\Illusion.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Boss\Obobo\Obobo.cs" Line="142" Column="5" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entity\Enemy\Slime.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

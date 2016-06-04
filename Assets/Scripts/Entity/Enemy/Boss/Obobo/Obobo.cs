@@ -3,7 +3,7 @@ using System.Collections;
 
 enum OBOBO_STATES { MOVEMENT, SPAWN };
 enum MOVE_DIRECTIONS { LEFT, RIGHT };
-public class Obobo : MonoBehaviour
+public class Obobo : Enemy
 {
     [SerializeField]
     GameObject slime;
@@ -11,8 +11,6 @@ public class Obobo : MonoBehaviour
     GameObject explosion;
     [SerializeField]
     GameObject deathExplosion;
-    [SerializeField]
-    GameObject ShieldPowerup;
 
     [SerializeField]
     RectTransform HP_BAR;
@@ -24,7 +22,6 @@ public class Obobo : MonoBehaviour
     [SerializeField]
     int SlimesToSpawn = 1;
 
-    float HEALTH = 100.0f;
     float MoveSpeed = 5.0f;
     float maxUpAndDown = 1;
     [SerializeField]
@@ -56,19 +53,19 @@ public class Obobo : MonoBehaviour
     [SerializeField]
     AudioClip SpawnSFX;
     // Use this for initialization
-    void Start()
+	protected override void Start()
     {
-        GameManager.enemy_count++;
         AudioManager.PlayBGM(OboboTheme, false);
 
         TimerToSpawn = DefaultTimerToSpawn;
         startHeight = transform.localPosition.y;
         goalLeft = new Vector2(transform.position.x - XdistanceToTravel, 0);
         goalRight = new Vector2(transform.position.x + XdistanceToTravel, 0);
+		base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         if (GameManager.started_game)
             TimerToSpawn -= Time.deltaTime;
@@ -146,7 +143,7 @@ public class Obobo : MonoBehaviour
 
             myRenderer.color = new Color(red, 0, 0, 1);
 
-            HP_BAR.localScale = new Vector3(HP_BAR.localScale.x - (1.5f * Time.deltaTime), HP_BAR.localScale.y, HP_BAR.localScale.z);
+			HP_BAR.localScale = new Vector3(getHealthRatio(), HP_BAR.localScale.y, HP_BAR.localScale.z);
             if (HP_BAR.localScale.x <= 0)
                 HP_BAR.localScale = new Vector3(0, HP_BAR.localScale.y, HP_BAR.localScale.z);
 
@@ -173,7 +170,7 @@ public class Obobo : MonoBehaviour
             temp = tempSlime.GetComponent<Slime>();
     }
 
-    IEnumerator StageDeath()
+    protected override IEnumerator HandleDeathAnimation()
     {
         Flashing = true;
         MoveSpeed *= 0.1f;
@@ -223,30 +220,21 @@ public class Obobo : MonoBehaviour
             pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
             Instantiate(deathExplosion, transform.position, deathExplosion.transform.rotation);
         }
-        if(ShieldPowerup)
-            Instantiate(ShieldPowerup, transform.position, ShieldPowerup.transform.rotation);
 
+		yield return base.HandleDeathAnimation ();
     }
 
-    IEnumerator KillBoss()
-    {
-        yield return new WaitForSeconds(3.0f);
-        GameManager.enemy_count--;
-        Destroy(gameObject);
-    }
+	protected override void TakeDamage(int _amount)
+	{
+		if (!isDead () && !Flashing) {
+			nCurrentHealth = Mathf.Max (nCurrentHealth - _amount, 0);
+			Debug.Log ("Health: " + nCurrentHealth);
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.transform.tag == "Projectile" && !Flashing)
-        {
-            StartCoroutine(GetHit());
-            HEALTH -= 10;
-            if (HEALTH <= 0.0f)
-            {
-                StartCoroutine(StageDeath());
-                StartCoroutine(KillBoss());
-            }
+			StartCoroutine (GetHit ());
 
-        }
-    }
+			if (isDead ()) {
+				StartCoroutine (HandleDeathAnimation());
+			}
+		}
+	}
 }
