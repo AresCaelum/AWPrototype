@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class DefenseObject : PowerUpObject {
+	[SerializeField]
+	protected int nDamage = 1000;
 
 	override protected void Start () {
 		if (Player.instance != null) {
@@ -25,5 +27,12 @@ public class DefenseObject : PowerUpObject {
 	void OnDestroy()
 	{
 		GameHud.DeactivateDefenseUI ();
+	}
+
+	protected virtual void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.tag == "Enemy") {
+			col.gameObject.SendMessage ("TakeDamage", nDamage);
+		}
 	}
 }

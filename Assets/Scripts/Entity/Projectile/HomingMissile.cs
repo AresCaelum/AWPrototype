@@ -29,10 +29,4 @@ public class HomingMissile : Projectile {
 		}
 		base.Update ();
 	}
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.tag == "Enemy" || col.tag == "Platform") {
-			Destroy(this.gameObject);
-		}
-	}
 }

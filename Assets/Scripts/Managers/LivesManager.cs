@@ -26,8 +26,10 @@ public class LivesManager : MonoBehaviour {
 
 		if (instance == null)
 			instance = this;
-		else
+		else {
 			Destroy (this);
+			return;
+		}
 
 		saveTimer = saveTimerRate;
 		DontDestroyOnLoad (this);

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Illusion : MonoBehaviour
+public class Illusion : Enemy
 {
     float Alpha = 1.0f;
     float angle = -90;
@@ -72,7 +72,7 @@ public class Illusion : MonoBehaviour
                 {
                     temp = Instantiate(Fireball, transform.position, Fireball.transform.rotation) as GameObject;
                     temp.transform.eulerAngles = new Vector3(0, 0, a);
-                    temp.GetComponent<FireBall>().movespeed *= 0.5f;
+					temp.GetComponent<FireBall>().ScaleSpeed(1, 0.5f);
                     a += 90;
                     Destroy(temp, 3.0f);
                 }

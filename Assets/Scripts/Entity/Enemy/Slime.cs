@@ -15,7 +15,7 @@ public class Slime : Enemy{
 
 	// Use this for initialization
 	override protected void Start () {
-		GameManager.enemy_count++;
+		
 		base.Start ();
 	}
 
@@ -50,19 +50,10 @@ public class Slime : Enemy{
 
 		fLastYVelocity = myBody.velocity.y;
 
-		if (Input.GetKeyDown (KeyCode.K)) {
-			CreateChildren ();
-		}
 		base.HandleAI ();
 	}
 
-	void OnDestroy()
-	{
-		if (GameManager.enemy_count > 0)
-			GameManager.enemy_count--;
-	}
-
-	void CreateChildren()
+	protected override IEnumerator HandleDeathAnimation()
 	{
 		if (mySize != SlimeSize.SMALL) {
 			Color color = gameObject.GetComponent<SpriteRenderer> ().color;
@@ -107,7 +98,7 @@ public class Slime : Enemy{
 			}
 		}
 
-		HandleDeath ();
+		yield return base.HandleDeathAnimation ();
 	}
 
 	public void SetSize(SlimeSize newSize)
@@ -134,12 +125,5 @@ public class Slime : Enemy{
 		startingVelocity = vel;
 		if(GameManager.started_game)
 			myBody.velocity = vel;
-	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.tag == "Projectile") {
-			CreateChildren ();
-		}
 	}
 }

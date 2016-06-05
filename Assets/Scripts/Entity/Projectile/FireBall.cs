@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FireBall : MonoBehaviour
+public class FireBall : Projectile
 {
-    public float movespeed = -5.0f;
-    // Use this for initialization
-    void Start()
-    {
+	// Use this for initialization
+	protected override void Start () {
+		base.Start ();
+	}
 
-    }
+	// Update is called once per frame
+	protected override void Update () {
+		base.Update ();
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(transform.up * movespeed * Time.deltaTime, Space.World);
-    }
+	protected override void UpdateAnimation()
+	{
+		base.UpdateAnimation ();
+	}
+	protected override void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.tag == "Player") {
+			col.gameObject.SendMessage ("TakeDamage", nDamage);
+			Destroy (this.gameObject);
+		}
+	}
 }

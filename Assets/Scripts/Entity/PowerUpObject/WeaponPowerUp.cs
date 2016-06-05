@@ -4,6 +4,7 @@ using System.Collections;
 public class WeaponPowerUp : PowerUpObject {
 	[SerializeField]protected float fireRate;
 	[SerializeField]protected GameObject ProjectileObject;
+	[SerializeField]protected float projectileLifeTime = 5.0f;
 	protected float fireTimer = 0.0f;
 	protected bool firable = true;
 
@@ -27,7 +28,8 @@ public class WeaponPowerUp : PowerUpObject {
 
 	virtual public void Fire(Vector3 _position)
 	{
-		Instantiate (ProjectileObject, _position, Quaternion.identity);
+		GameObject temp = Instantiate (ProjectileObject, _position, Quaternion.identity) as GameObject;
+		Destroy (temp, projectileLifeTime);
 		Fired ();
 	}
 

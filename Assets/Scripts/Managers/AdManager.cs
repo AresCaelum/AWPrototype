@@ -15,8 +15,10 @@ public class AdManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		if (AdManager.instance != null)
+		if (AdManager.instance != null) {
 			Destroy (this.gameObject);
+			return;
+		}
 
 		instance = this;
         DontDestroyOnLoad(this);

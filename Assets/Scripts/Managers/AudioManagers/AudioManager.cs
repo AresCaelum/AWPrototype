@@ -17,10 +17,12 @@ public class AudioManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
+		if (instance == null)
+			instance = this;
+		else {
+			Destroy (this.gameObject);
+			return;
+		}
 
         DontDestroyOnLoad(this);
         MasterVolume = PlayerPrefs.GetFloat("masterVolume", 1.0f);
@@ -68,7 +70,9 @@ public class AudioManager : MonoBehaviour
         }
     }
     static public void PlayBGM(AudioClip _Clip, bool _Restart = true)
-    {
+	{
+		if (instance == null)
+			return;
 		if (_Restart && instance.BackgroundMusic.isPlaying) 
 		{
 			instance.BackgroundMusic.Stop ();

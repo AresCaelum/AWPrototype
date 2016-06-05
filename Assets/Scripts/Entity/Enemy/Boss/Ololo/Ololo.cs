@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 enum OLOLO_STATES { SHOOTING, TELEPORTING, BOTH };
 
-public class Ololo : MonoBehaviour
+public class Ololo : Enemy
 {
     [SerializeField]
     GameObject TeleportingEffect;
@@ -23,7 +23,6 @@ public class Ololo : MonoBehaviour
     List<Vector2> IllusionPositions = new List<Vector2>();
 
     Color originalColor = Color.white;
-    float HEALTH = 100.0f;
     [SerializeField]
     float TimeToTeleport = 1.0f;
     float FireCoolDown = 1.0f;
@@ -55,24 +54,18 @@ public class Ololo : MonoBehaviour
     AudioClip HitSFX;
     [SerializeField]
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
         AudioManager.PlayBGM(OloloTheme, false);
         FireTimer = DefaultFireTimer;
         startHeight = transform.position.y;
         Radius = GetComponent<CircleCollider2D>().radius;
-        GameManager.enemy_count++;
+		base.Start ();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TESTING DEATH
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    StartCoroutine(StageDeath());
-        //    StartCoroutine(KillBoss());
-        //}
         if (IllusionsAreGone() && !Teleporting && !Flashing && !Dieing)
             StartCoroutine(Teleport());
         if (!Teleporting && !Dieing && !Enraged)
@@ -263,7 +256,7 @@ public class Ololo : MonoBehaviour
 
             myRenderer.color = new Color(red, 0, 0, 1);
 
-            HP_BAR.localScale = new Vector3(HP_BAR.localScale.x - ((1.5f * 0.5f) * num * Time.deltaTime), HP_BAR.localScale.y, HP_BAR.localScale.z);
+			HP_BAR.localScale = new Vector3(getHealthRatio(), HP_BAR.localScale.y, HP_BAR.localScale.z);
             if (HP_BAR.localScale.x <= 0)
                 HP_BAR.localScale = new Vector3(0, HP_BAR.localScale.y, HP_BAR.localScale.z);
 
@@ -294,14 +287,14 @@ public class Ololo : MonoBehaviour
         {
             temp = Instantiate(Fireball, transform.position, Fireball.transform.rotation) as GameObject;
             temp.transform.eulerAngles = new Vector3(0, 0, angle);
-            temp.GetComponent<FireBall>().movespeed *= 0.5f;
+			temp.GetComponent<FireBall>().ScaleSpeed(1, 0.5f);
             angle += 90;
             Destroy(temp, 5.0f);
         }
         FireTimer = DefaultFireTimer+1.0f;
     }
 
-    IEnumerator StageDeath()
+    protected override IEnumerator HandleDeathAnimation()
     {
         Dieing = true;
         CleanIllusions();
@@ -353,41 +346,28 @@ public class Ololo : MonoBehaviour
             pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
             Instantiate(deathExplosion, transform.position, deathExplosion.transform.rotation);
         }
-    }
-
-    IEnumerator KillBoss()
-    {
-        yield return new WaitForSeconds(3.0f);
-        GameManager.enemy_count--;
-        Destroy(gameObject);
+		yield return base.HandleDeathAnimation ();
     }
 
     public bool IsEnraged()
     {
         return Enraged;
     }
+	protected override void TakeDamage(int _amount)
+	{
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag == "Projectile")
-        {
-            if (!Flashing)
-            {
-                HEALTH -= 5 * IllusionsSpawned.Count;
-                StartCoroutine(GetHit(IllusionsSpawned.Count));
+		if (!isDead () && !Flashing) {
+			nCurrentHealth = Mathf.Max (nCurrentHealth - (_amount * IllusionsSpawned.Count), 0);
+			StartCoroutine(GetHit(IllusionsSpawned.Count));
 
-                if (HEALTH <= 0)
-                {
-                    StartCoroutine(StageDeath());
-                    StartCoroutine(KillBoss());
-                }
-                if (HEALTH < 40)
-                {
-                    Enraged = true;
-                    originalColor = new Color(0.5f, 0.25f, 0.25f);
-                }
-            }
-        }
-    }
+			if (getHealthRatio () <= 0.4f) {
+				Enraged = true;
+				originalColor = new Color(0.5f, 0.25f, 0.25f);
+			}
 
+			if (isDead ()) {
+				StartCoroutine (HandleDeathAnimation());
+			}
+		}
+	}
 }
