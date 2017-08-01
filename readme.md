@@ -11,4 +11,4 @@ Boss
 
 Collision Settings:
 Slime doesnt collide with:
-	Slime
+	Slime# AWPrototype
